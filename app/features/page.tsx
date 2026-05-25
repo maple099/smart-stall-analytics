@@ -1,4 +1,7 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
+import { motion } from "framer-motion";
 import {
   Brain,
   Clock,
@@ -74,9 +77,14 @@ export default function FeaturesPage() {
               const Icon = feature.icon;
 
               return (
-                <div
-                  key={feature.title}
-                  className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-lg transition"
+                <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-lg transition"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6">
                     <Icon size={28} strokeWidth={2.2} />
@@ -89,7 +97,7 @@ export default function FeaturesPage() {
                   <p className="text-gray-600 leading-relaxed">
                     {feature.description}
                   </p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
