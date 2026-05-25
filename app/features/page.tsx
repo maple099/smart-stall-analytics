@@ -1,38 +1,46 @@
 import Navbar from "@/components/Navbar";
+import {
+  Brain,
+  Clock,
+  Flame,
+  Thermometer,
+  BellRing,
+  TrendingUp,
+} from "lucide-react";
 
 const features = [
   {
-    icon: "🧠",
+    icon: Brain,
     title: "Visitor Detection",
     description:
       "Track customer movement and visitor traffic using real-time AI detection.",
   },
   {
-    icon: "⏱️",
+    icon: Clock,
     title: "Dwell Time Analytics",
     description:
       "Measure how long customers stay and engage within product zones.",
   },
   {
-    icon: "🔥",
+    icon: Flame,
     title: "Heatmap Monitoring",
     description:
       "Visualize high-traffic and low-traffic areas inside the stall.",
   },
   {
-    icon: "🌡️",
+    icon: Thermometer,
     title: "Environmental Monitoring",
     description:
       "Monitor temperature and humidity using IoT sensor integration.",
   },
   {
-    icon: "🚨",
+    icon: BellRing,
     title: "Smart Alerts",
     description:
       "Receive anomaly alerts and unusual traffic notifications instantly.",
   },
   {
-    icon: "📈",
+    icon: TrendingUp,
     title: "Forecast Analytics",
     description:
       "Predict customer traffic trends using AI-powered analytics.",
@@ -62,22 +70,28 @@ export default function FeaturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-lg transition"
-              >
-                <div className="text-4xl mb-6">{feature.icon}</div>
+            {features.map((feature) => {
+              const Icon = feature.icon;
 
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                  {feature.title}
-                </h3>
+              return (
+                <div
+                  key={feature.title}
+                  className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm hover:shadow-lg transition"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6">
+                    <Icon size={28} strokeWidth={2.2} />
+                  </div>
 
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-gray-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </section>
       </main>

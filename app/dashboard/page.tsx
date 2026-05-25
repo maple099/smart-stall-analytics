@@ -1,4 +1,25 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+
+const trafficData = [
+  { time: "8AM", visitors: 120 },
+  { time: "10AM", visitors: 280 },
+  { time: "12PM", visitors: 450 },
+  { time: "2PM", visitors: 320 },
+  { time: "4PM", visitors: 560 },
+  { time: "6PM", visitors: 720 },
+  { time: "8PM", visitors: 480 },
+];
 
 export default function DashboardPage() {
   return (
@@ -134,8 +155,22 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                <div className="h-72 rounded-2xl bg-gradient-to-r from-blue-100 to-blue-50 flex items-center justify-center text-gray-500 font-medium">
-                  Traffic Chart Placeholder
+                <div className="h-72">
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={trafficData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="time" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line
+                        type="monotone"
+                        dataKey="visitors"
+                        stroke="#2563EB"
+                        strokeWidth={3}
+                        dot={{ r: 5 }}
+                    />
+                    </LineChart>
+                </ResponsiveContainer>
                 </div>
 
               </div>
